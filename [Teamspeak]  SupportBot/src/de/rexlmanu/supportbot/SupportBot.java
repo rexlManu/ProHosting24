@@ -7,6 +7,7 @@ package de.rexlmanu.supportbot;
 
 import de.rexlmanu.supportbot.bot.TeamspeakConnector;
 import de.rexlmanu.supportbot.config.ConfigHandler;
+import de.rexlmanu.supportbot.listeners.TeamspeakListener;
 import de.rexlmanu.supportbot.support.SupportManager;
 
 public class SupportBot {
@@ -34,6 +35,8 @@ public class SupportBot {
         this.queryport = configHandler.getJsonObject().getString("QueryPort");
         this.queryusername = configHandler.getJsonObject().getString("QueryUsername");
         this.querypasswort = configHandler.getJsonObject().getString("QueryPassword");
+        TeamspeakListener.SUPPORTWARTERAUM_CHANNELID = configHandler.getJsonObject().getInt("SupportChannel");
+        SupportManager.SUPPORT_NOTIFY_GROUPID = configHandler.getJsonObject().getInt("SupportGroup");
         System.out.println(teamspeakip);
 
 

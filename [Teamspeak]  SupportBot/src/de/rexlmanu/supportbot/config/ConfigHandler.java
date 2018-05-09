@@ -37,6 +37,8 @@ public class ConfigHandler {
                 jsonObject.put("QueryUsername", "serveradmin");
                 jsonObject.put("QueryPassword", "pw");
                 jsonObject.put("QueryPort", "10011");
+                jsonObject.put("SupportGroup", "1");
+                jsonObject.put("SupportChannel", "8");
                 write(config, jsonObject.toString());
             } catch (IOException e) {
                 e.printStackTrace();

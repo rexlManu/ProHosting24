@@ -9,6 +9,7 @@ import com.github.theholywaffle.teamspeak3.api.ChannelProperty;
 import com.github.theholywaffle.teamspeak3.api.wrapper.Client;
 import de.rexlmanu.supportbot.SupportBot;
 import de.rexlmanu.supportbot.bot.TeamspeakConnector;
+import de.rexlmanu.supportbot.listeners.TeamspeakListener;
 import de.rexlmanu.supportbot.utils.TSUtils;
 
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public class SupportManager {
     private final TeamspeakConnector teamspeakConnector = SupportBot.getInstance().getTeamspeakConnector();
     private ConcurrentHashMap<Integer, Support> supports = new ConcurrentHashMap<>();
 
-    public static final int SUPPORT_NOTIFY_GROUPID = 296;
+    public static int SUPPORT_NOTIFY_GROUPID = 296;
 
 
     public ConcurrentHashMap<Integer, Support> getSupports() {
@@ -35,7 +36,7 @@ public class SupportManager {
         final Map<ChannelProperty, String> properties = new HashMap<>();
 
         properties.put(ChannelProperty.CHANNEL_FLAG_PERMANENT, "1");
-        properties.put(ChannelProperty.CHANNEL_ORDER, "766");
+        properties.put(ChannelProperty.CHANNEL_ORDER, String.valueOf(TeamspeakListener.SUPPORTWARTERAUM_CHANNELID));
         properties.put(ChannelProperty.CHANNEL_MAXCLIENTS, "0");
         String channelbeginn = "» Support × #";
         int channelID = teamspeakConnector.getTs3Api().createChannel(channelbeginn + supportID, properties);

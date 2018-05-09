@@ -22,7 +22,7 @@ public class TeamspeakListener implements TS3Listener {
     private final SupportBot supportBot = SupportBot.getInstance();
     private final TeamspeakConnector teamspeakConnector = supportBot.getTeamspeakConnector();
 
-    public static final int SUPPORTWARTERAUM_CHANNELID = 766;
+    public static int SUPPORTWARTERAUM_CHANNELID = 766;
 
     @Override
     public void onTextMessage(TextMessageEvent e) {
@@ -153,6 +153,9 @@ public class TeamspeakListener implements TS3Listener {
     public void onClientLeave(ClientLeaveEvent e) {
         Client client = TSUtils.getClient(e.getClientId());
         if (supportManager.isGetingSupport(client)) {
+            supportManager.unregisterSupport(client);
+        }else if(supportManager.getSupports().containsKey(client.getId())){
+            final Support support = supportManager.getSupports().get(client.getId());
             supportManager.unregisterSupport(client);
         }
     }

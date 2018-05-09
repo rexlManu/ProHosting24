@@ -31,6 +31,11 @@ public class TeamspeakListener implements TS3Listener {
 
                 String message = e.getMessage();
                 Client client = TSUtils.getClient(e.getInvokerId());
+                if(message.equalsIgnoreCase("!coder")){
+                    TSUtils.sendMessage("Der Coder vom Teamspeak Support Bot ist rexlManu.", client);
+                    TSUtils.sendMessage("> https://rexlmanu.de", client);
+                    return;
+                }
                 if (message.startsWith("!support")) {
                     if (TSUtils.hasGroup(client, SupportManager.SUPPORT_NOTIFY_GROUPID)) {
 

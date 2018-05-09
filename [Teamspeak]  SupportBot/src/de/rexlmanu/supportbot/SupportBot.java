@@ -41,7 +41,7 @@ public class SupportBot {
 
 
         this.teamspeakConnector = new TeamspeakConnector(teamspeakip, queryport);
-        this.teamspeakConnector.connect(queryusername, querypasswort);
+        this.teamspeakConnector.connect(queryusername, querypasswort, configHandler.getJsonObject().getInt("Virtuelserver"));
         this.supportManager = new SupportManager();
         this.teamspeakConnector.register();
 

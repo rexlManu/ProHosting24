@@ -39,6 +39,7 @@ public class ConfigHandler {
                 jsonObject.put("QueryPort", "10011");
                 jsonObject.put("SupportGroup", "1");
                 jsonObject.put("SupportChannel", "8");
+                jsonObject.put("Virtuelserver", "8");
                 write(config, jsonObject.toString());
             } catch (IOException e) {
                 e.printStackTrace();

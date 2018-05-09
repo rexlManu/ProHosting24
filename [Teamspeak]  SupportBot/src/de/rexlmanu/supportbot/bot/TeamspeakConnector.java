@@ -27,13 +27,13 @@ public class TeamspeakConnector {
         ts3Config.setEnableCommunicationsLogging(true);
     }
 
-    public void connect(String queryusername, String querypassword) {
+    public void connect(String queryusername, String querypassword, int virtuelserver) {
         this.ts3Query = new TS3Query(this.ts3Config);
         ts3Query.connect();
         this.ts3Api = ts3Query.getApi();
         boolean login = ts3Api.login(queryusername, querypassword);
         if (login) {
-            ts3Api.selectVirtualServerById(1);
+            ts3Api.selectVirtualServerById(virtuelserver);
             ts3Api.setNickname("SupportBot - ProHosting24");
             ts3Api.sendServerMessage("SupportBot coded by rexlManu ist nun online!");
         } else {
